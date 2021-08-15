@@ -1,9 +1,9 @@
 import faker from "faker";
-import userSchema from "../models/user.js";
+import User from "../models/user.js";
 
 function createUsers() {
   for (let i = 0; i < 5; i++) {
-    const user = new userSchema({
+    const user = new User({
       username: faker.internet.userName(),
       password: faker.internet.password(),
     });

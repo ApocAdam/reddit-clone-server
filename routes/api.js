@@ -1,20 +1,24 @@
 import express from "express";
-import createUsers from "../generator/users.js";
-import createPosts from "../generator/posts.js";
+import getPosts from "../controllers/posts.js";
+import populate from "../generator/populate.js";
+
 const router = express.Router();
 
-router.get("/test", (req, res) => {
-  res.json({
-    message: "hsefwefi",
-  });
+router.get("/populate", (req, res) => {
+  populate();
+  res.send("working");
 });
 
-router.get("/populate", (req, res) => {
-  createUsers();
-  createPosts();
-  res.json({
-    message: "test",
-  });
+router.get("/posts", (req, res) => {
+  getPosts(req, res);
+});
+
+router.get("/posts/:id", (req, res) => {
+  getPosts(req, res);
+});
+
+router.get("*", (req, res) => {
+  res.status(404).send("Not found");
 });
 
 export default router;

@@ -18,6 +18,8 @@ db.once("open", function () {
   console.log("Connected to DB");
 });
 
+app.get("/", (req, res) => res.send("This is the reddit clone api"));
+
 app.use("/api", router);
 
 app.listen(port, () => {

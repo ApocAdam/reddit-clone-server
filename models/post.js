@@ -5,7 +5,8 @@ const postSchema = new Schema({
   title: { type: String, required: true },
   body: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  author: { type: String },
+  author: { type: Schema.Types.ObjectId, ref: "User" },
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   votes: Number,
   views: Number,
 });
