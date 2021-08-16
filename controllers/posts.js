@@ -7,6 +7,11 @@ function getPosts(req, res) {
   });
 }
 
-// function getPost(req, res) {}
+function getPost(req, res) {
+  Post.findById(req.params.id, (err, post) => {
+    if (err) return err;
+    res.json(post);
+  });
+}
 
-export default getPosts;
+export { getPosts, getPost }
